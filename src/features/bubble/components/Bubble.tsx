@@ -96,13 +96,14 @@ export const Bubble = (props: BubbleProps) => {
           'background-position': 'center',
           'background-repeat': 'no-repeat',
           'z-index': 42424242,
+          position: 'fixed',
           bottom: `${Math.min(buttonPosition().bottom + buttonSize + 10, window.innerHeight - chatWindowBottom)}px`,
-          left: '20px', // Fixed left position
+          left: '20px',
+          right: 'auto'
         }}
         class={
-          `fixed rounded-lg w-full sm:w-[400px] max-h-[704px]` +
-          (isBotOpened() ? ' opacity-1' : ' opacity-0 pointer-events-none') +
-          ` bottom-${chatWindowBottom}px`
+          `rounded-lg w-full sm:w-[400px] max-h-[704px]` +
+          (isBotOpened() ? ' opacity-1' : ' opacity-0 pointer-events-none')
         }
       >
         <Show when={isBotStarted()}>

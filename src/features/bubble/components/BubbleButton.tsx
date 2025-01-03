@@ -91,12 +91,15 @@ export const BubbleButton = (props: Props) => {
         onMouseDown={onMouseDown}
         class={`fixed shadow-md rounded-full hover:scale-110 active:scale-95 transition-transform duration-200 flex justify-center items-center animate-fade-in`}
         style={{
-          'background-color': props.backgroundColor ?? defaultButtonColor,
-          'z-index': 42424242,
-          left: `${position().left}px`,
+          position: 'fixed',
           bottom: `${position().bottom}px`,
-          width: `${buttonSize}px`,
+          left: `${position().left}px`,
+          right: 'auto',
+          'background-color': props.backgroundColor ?? defaultButtonColor,
           height: `${buttonSize}px`,
+          width: `${buttonSize}px`,
+          'transform-origin': 'bottom left',
+          'z-index': 42424242,
           cursor: props.dragAndDrop ? 'grab' : 'pointer',
         }}
       >
