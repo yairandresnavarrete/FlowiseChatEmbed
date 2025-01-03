@@ -99,12 +99,9 @@ export const Bubble = (props: BubbleProps) => {
           position: 'fixed',
           bottom: `${Math.min(buttonPosition().bottom + buttonSize + 10, window.innerHeight - chatWindowBottom)}px`,
           left: '20px',
-          right: 'auto'
+          right: 'auto',
         }}
-        class={
-          `rounded-lg w-full sm:w-[400px] max-h-[704px]` +
-          (isBotOpened() ? ' opacity-1' : ' opacity-0 pointer-events-none')
-        }
+        class={`rounded-lg w-full sm:w-[400px] max-h-[704px]` + (isBotOpened() ? ' opacity-1' : ' opacity-0 pointer-events-none')}
       >
         <Show when={isBotStarted()}>
           <div class="relative h-full">
