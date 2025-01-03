@@ -5,7 +5,7 @@ import { ButtonTheme } from '../types';
 type Props = ButtonTheme & {
   isBotOpened: boolean;
   toggleBot: () => void;
-  setButtonPosition: (position: { bottom: number; right: number }) => void;
+  setButtonPosition: (position: { bottom: number; left: number }) => void;
   dragAndDrop: boolean;
   autoOpen?: boolean; // Optional parameter to control automatic window opening
   openDelay?: number; // Optional parameter for delay time in seconds
@@ -15,26 +15,26 @@ type Props = ButtonTheme & {
 const defaultButtonColor = '#3B81F6';
 const defaultIconColor = 'white';
 const defaultBottom = 20;
-const defaultRight = 20;
+const defaultLeft = 20;
 
 export const BubbleButton = (props: Props) => {
   const buttonSize = getBubbleButtonSize(props.size);
 
   const [position, setPosition] = createSignal({
     bottom: props.bottom ?? defaultBottom,
-    right: props.right ?? defaultRight,
+    left: props.left ?? defaultLeft,
   });
 
   const [isSmallScreen, setIsSmallScreen] = createSignal(false);
   const [userInteracted, setUserInteracted] = createSignal(false);
 
   let dragStartX: number;
-  let initialRight: number;
+  let initialLeft: number;
 
   const onMouseDown = (e: MouseEvent) => {
     if (props.dragAndDrop) {
       dragStartX = e.clientX;
-      initialRight = position().right;
+      initialLeft = position().left;
 
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
@@ -43,13 +43,13 @@ export const BubbleButton = (props: Props) => {
 
   const onMouseMove = (e: MouseEvent) => {
     const deltaX = dragStartX - e.clientX;
-    const newRight = initialRight + deltaX;
+    const newLeft = initialLeft + deltaX;
 
     const screenWidth = window.innerWidth;
-    const maxRight = screenWidth - buttonSize;
+    const maxLeft = screenWidth - buttonSize;
 
     const newPosition = {
-      right: Math.min(Math.max(newRight, defaultRight), maxRight),
+      left: Math.min(Math.max(newLeft, defaultLeft), maxLeft),
       bottom: position().bottom,
     };
 
@@ -93,7 +93,7 @@ export const BubbleButton = (props: Props) => {
         style={{
           'background-color': props.backgroundColor ?? defaultButtonColor,
           'z-index': 42424242,
-          right: `${position().right}px`,
+          left: `${position().left}px`,
           bottom: `${position().bottom}px`,
           width: `${buttonSize}px`,
           height: `${buttonSize}px`,
