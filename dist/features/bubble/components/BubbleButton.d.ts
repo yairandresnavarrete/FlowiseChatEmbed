@@ -4,7 +4,7 @@ type Props = ButtonTheme & {
     toggleBot: () => void;
     setButtonPosition: (position: {
         bottom: number;
-        right: number;
+        left: number;
     }) => void;
     dragAndDrop: boolean;
     autoOpen?: boolean;

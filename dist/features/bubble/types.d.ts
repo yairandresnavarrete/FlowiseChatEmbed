@@ -74,7 +74,7 @@ export type ButtonTheme = {
     iconColor?: string;
     customIconSrc?: string;
     bottom?: number;
-    right?: number;
+    left?: number;
     dragAndDrop?: boolean;
     autoWindowOpen?: autoWindowOpenTheme;
 };
